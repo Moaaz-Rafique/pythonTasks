@@ -1,0 +1,49 @@
+< Init,init >
+< Identifier,print >
+< Assignment,= >
+< Literal, 10 >
+< Punctuators,; >
+< Init,init >
+< Identifier,ele >
+< Assignment,= >
+< Literal,"10 >
+< Unknown," >
+< Punctuators,; >
+< Keyword,if >
+< Punctuators,( >
+< Identifier,ele >
+< MO_plus,% >
+< Literal, 2 >
+< Assignment,= >
+< Assignment,= >
+< Literal, 0 >
+< Punctuators,) >
+< Punctuators,{ >
+< Keyword,if >
+< Identifier,ele >
+< RO_g,> >
+< Assignment,= >
+< Literal, 5 >
+< Punctuators,{ >
+< Identifier,print >
+< Punctuators,( >
+< Literal,"number is even and bigger than 5" >
+< Punctuators,) >
+< Punctuators,; >
+< Identifier,print >
+< Punctuators,( >
+< Literal,"number is even and bigger than 5" >
+< MO_plus,+ >
+< Identifier,abc >
+< Punctuators,) >
+< Punctuators,; >
+< Punctuators,} >
+< Keyword,else >
+< Punctuators,{ >
+< Identifier,print >
+< Punctuators,( >
+< Literal,"number is even and less than 5" >
+< Punctuators,) >
+< Punctuators,; >
+< Punctuators,} >
+< Punctuators,} >
