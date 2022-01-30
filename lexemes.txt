@@ -1,0 +1,3 @@
+< Identifier,y >
+< Assignment,= >
+< Literal, 5 >

@@ -1,18 +1,36 @@
 import re
 
-classes = [('Keyword', r'for|if|else|while|elif|def'),
-            ('Init', r'init'),
-           ('Datatypes', r'int|str|complex|list|range|bool'),
-           ('Punctuators', r'\(|\)|\{|\}|\[|\]|,|;|:'), 
-           ('Assignment', r'='), ('RO_le', r'<='),
-           ('RO_l', r'<'), ('RO_g', r'>|>=|<>'),
-           ('LO_OR', r'OR|AND|NOT'),
-           ('MO_plus', r'\+|\%|-|\*|\/'),
-           ('Increment', r'\+\+'), ('Dectrement', r'\--'),
-           ('Literal', r'([\d]+)|([\d]*.[\d]+)|\"(.+?)\"|(true)|(false)'), 
-           ('Identifier', r'[A-Za-z_]+'),
-           ('Whitespace', r'[\n]|[ \t]+'), 
-           ('Unknown', r'.')]
+classes = [  # ('Keyword', r'for|if|else|while|elif|def'),
+    ('For', r'for'),
+    ('If', r'if'),
+    ('Else', r'else'),
+    ('While', r'while'),
+    ('Elif', r'elif'),
+    ('Def', r'def'),
+    ('Init', r'init'),
+    ('Print', r'print'),
+    ('Datatypes', r'int|str|complex|list|range|bool'),
+    ('LeftParenthesis', r'\('),
+    ('RightParenthesis', r'\)'),
+    ('LeftCurly', r'\{'),
+    ('RightCurly', r'\}'),
+    ('LeftSquare', r'\['),
+    ('RightSquare', r'\]'),
+    ('SemiColon', r'\;'),
+    ('Colon', r'\:'),
+    ('Comma', r'\,'),
+    ('RelOp', r'(<=)|(>=)|(<>)|(==)|or|and|not|(<)|(>)'),
+    ('Assignment', r'='),
+    # ('Or', r'or|and|not'),
+    # ('And', r'and'),
+    # ('Not', r'not'),
+    ('MSO', r'\+|\-'),
+    ('MFO', r'\%|\*|\/'),
+    ('Literal', r'(\"(.+?)\")|([\d]+)|([\d]*.[\d]+)|(true)|(false)'),
+    ('Increment', r'\+\+'), ('Decrement', r'\--'),
+    ('Identifier', r'[A-Za-z_]+'),
+    ('Whitespace', r'[\n]|[ \t]+'),
+    ('Unknown', r'.')]
 tokens_join = '|'.join('(?P<%s>%s)' % x for x in classes)
 # print(tokens_join)
 lin_start = 0
@@ -20,7 +38,7 @@ lin_start = 0
 token = []
 lexeme = []
 lexemeList = []
-cleanCodeFile = open('cleanCode.txt', 'r')
+cleanCodeFile = open('lab6LexicalAnalizer/cleanCode.txt', 'r')
 code = cleanCodeFile.read()
 cleanCodeFile.close()
 

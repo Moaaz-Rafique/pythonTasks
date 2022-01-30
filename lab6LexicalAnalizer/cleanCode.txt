@@ -1,12 +1,1 @@
-init print = 10;
-init ele = "10";
-
-if (ele % 2 == 0){    
-    if ele >= 5 {
-        print("number is even and bigger than 5");
-        print("number is even and bigger than 5" + abc);
-    }
-    else{
-        print("number is even and less than 5");
-    }
-}
+y = 5

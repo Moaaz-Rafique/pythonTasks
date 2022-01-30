@@ -1,26 +1,43 @@
-from lab6LexicalAnalizer import lab6Q2
+# from lab6LexicalAnalizer import lab6Q2
+from treelib import Node, Tree
 
 
-def validate(s, c, n, currentIndex):
-    print(f"\n{s},{currentIndex}", end=" ")
+def validate(s, c, n, currentIndex, tree, index=0):
+    print(f"\n{s},{currentIndex}")
     if len(s) < 1:
         return False
     if s[-1] == "$":
         if currentIndex == len(n) - 1:
             return True
-    if s[-1] in c.keys():  # c.keys() to check if non-terminal
+    if s[-1] in c.keys():
         x = c[s[-1]]
-        s.pop()
+        curr_key = s.pop()
         for y in x:
             j = len(y) - 1
             i = len(y) - 1
+            index += 1
             while i >= 0:
                 ch = y[i]
                 s.append(ch)
+                # tree.create_node(ch, ch[1:-1] + str(currentIndex), parent=curr_key)
+                tree.show()
+                try:
+                    print(curr_key[1:-1] + str(currentIndex))
+                    tree.create_node(ch[1:-1] + str(index), ch[1:-1] + str(index),
+                                     parent=curr_key[1:-1] + str(index - 1))
+                except:
+                    try:
+                        tree.remove_node(ch[1:-1] + str(index))
+                        tree.create_node(ch[1:-1] + str(index), ch[1:-1] + str(index),
+                                         parent=curr_key[1:-1] + str(index - 1))
+                    except:
+                        print("sheeeesh")
+
                 i = i - 1
-            if validate(s, c, n, currentIndex):
+            if validate(s, c, n, currentIndex, tree, index):
                 return True
             else:
+                index -= 1
                 for k in range(j):
                     if (len(s) > 1):
                         s.pop()
@@ -30,7 +47,8 @@ def validate(s, c, n, currentIndex):
         terminal = s.pop()
         if terminal == n[currentIndex]:
             currentIndex = currentIndex + 1
-            return validate(s, c, n, currentIndex)
+            index -= 1
+            return validate(s, c, n, currentIndex, tree, index)
     return False
 
 
@@ -74,11 +92,17 @@ inp = [lexSeq]  #
 ans = []
 for n in inp:
     s = ["$", "<Body>"]
+    tree = Tree()
+    tree.create_node("<Body>", "Body0")
+
     currentIndex = 0
     try:
-        ans.append((n, validate(s, c, n, currentIndex)))
+        ans.append((n, validate(s, c, n, currentIndex, tree)))
     except RecursionError:
         print("\nDepth Exceeded \n Invalid Code\nSyntax Error")
 
 for a in ans:
     print(a)
+
+print("Tree----------")
+tree.show()
