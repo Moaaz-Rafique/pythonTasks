@@ -13,7 +13,7 @@ linesWithBlanks =re.split("\n", multilineComments)
 
 finalLines = [line for line in linesWithBlanks if line.strip() != ""]
 finalCode = "\n".join(finalLines)
-# print(finalCode)
+print(finalCode)
 f = open("cleanCode.txt", "w")
 f.write(finalCode)
 f.close()

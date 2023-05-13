@@ -1,4 +1,4 @@
-# from lab6LexicalAnalizer import lab6Q2
+from lab6LexicalAnalizer import lab6Q2
 from treelib import Node, Tree
 
 
@@ -75,6 +75,8 @@ c["<Loop>"] = [['For', "LeftParenthesis", '<Y2>', "RightParenthesis", "LeftCurly
 c["<Y2>"] = [['<Initialize>', 'SemiColon', '<RelExpr>', 'SemiColon', '<Operation>']]
 
 c["<Print>"] = [["Print", "LeftParenthesis", "<Expr>", "RightParenthesis"]]
+
+
 tok = open("lexemes.txt", "r").read()
 tok = tok.split('\n')
 tokArray = []
@@ -97,12 +99,13 @@ for n in inp:
 
     currentIndex = 0
     try:
-        ans.append((n, validate(s, c, n, currentIndex, tree)))
+        print('Valid cfg',validate(s, c, n, currentIndex, tree))
+        # ans.append((n, validate(s, c, n, currentIndex, tree)))
     except RecursionError:
         print("\nDepth Exceeded \n Invalid Code\nSyntax Error")
 
 for a in ans:
     print(a)
 
-print("Tree----------")
-tree.show()
+# print("Tree----------")
+# tree.show()
